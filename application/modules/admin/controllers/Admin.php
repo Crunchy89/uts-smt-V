@@ -7,13 +7,59 @@ class Admin extends MY_Controller
 	{
 		parent::__construct();
 		$this->load->library('form_validation');
+		$this->load->model("excel_export_model");
 	}
 
 	public function index()
 	{
 		$data['title'] = "admin page";
-		$data['pengguna'] = $this->db->get('pengguna')->result();
+		$data['pengguna'] = $this->excel_export_model->fetch_data();
 		admin_page('index', $data);
+	}
+
+	function action()
+	{
+
+		$this->load->library("excel");
+
+		$object = new PHPExcel();
+
+		$object->setActiveSheetIndex(0);
+
+		$table_columns = array("Nama Depan", "Nama Belakang", "Email", "Username", "Password", "Level");
+
+		$column = 0;
+
+		foreach ($table_columns as $field) {
+
+			$object->getActiveSheet()->setCellValueByColumnAndRow($column, 1, $field);
+
+			$column++;
+		}
+
+		$pengguna = $this->excel_export_model->fetch_data();
+
+		$excel_row = 2;
+
+		foreach ($pengguna as $row) {
+
+			$object->getActiveSheet()->setCellValueByColumnAndRow(0, $excel_row, $row->nama_depan);
+			$object->getActiveSheet()->setCellValueByColumnAndRow(1, $excel_row, $row->nama_belakang);
+			$object->getActiveSheet()->setCellValueByColumnAndRow(2, $excel_row, $row->email);
+			$object->getActiveSheet()->setCellValueByColumnAndRow(3, $excel_row, $row->username);
+			$object->getActiveSheet()->setCellValueByColumnAndRow(4, $excel_row, $row->password);
+			$object->getActiveSheet()->setCellValueByColumnAndRow(5, $excel_row, $row->level);
+
+			$excel_row++;
+		}
+
+		$object_writer = PHPExcel_IOFactory::createWriter($object, 'Excel5');
+
+		header('Content-Type: application/vnd.ms-excel');
+
+		header('Content-Disposition: attachment;filename="User Export.xls"');
+
+		$object_writer->save('php://output');
 	}
 
 	public function tambah_pengguna()

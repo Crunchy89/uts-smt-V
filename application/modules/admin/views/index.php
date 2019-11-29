@@ -1,6 +1,10 @@
 <h1 class="text-center">Data Pengguna</h1>
-<a href="<?= site_url('admin/tambah_pengguna') ?>" class="btn btn-success mt-3 mb-3">Tambah Data</a>
-
+<div class="form-group row">
+	<div class="col-md-3">
+		<a href="<?= site_url('admin/tambah_pengguna') ?>" class="btn btn-primary mt-3 mb-3">Tambah Data</a>
+		<a href="<?= site_url('admin/action') ?>" class="btn btn-success mt-3 mb-3">Export Excel</a>
+	</div>
+</div>
 <div class="table-responsive">
 	<table class="table table-bordered table-sm table-hover" id="dataTable" width="100%" cellspacing="0">
 		<thead>
