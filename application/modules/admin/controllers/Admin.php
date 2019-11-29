@@ -119,10 +119,16 @@ class Admin extends MY_Controller
 			$this->load->library('upload', $config);
 			if ($this->upload->do_upload('gambar')) {
 				$new_image = $this->upload->data('file_name');
+				if ($old_image != $new_image) {
+					unlink("assets/img/$old_image");
+				}
 			} else {
 				$error = $this->upload->display_errors();
 				$this->session->set_flashdata('message', '<div class="alert alert-danger text-center" role="alert">' . $error . '</div>');
 			}
+		}
+		if (!$new_image) {
+			$new_image = $old_image;
 		}
 		$id = $this->input->post('id');
 		$nd = $this->input->post('nd');

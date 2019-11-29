@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 29, 2019 at 01:22 PM
+-- Generation Time: Nov 29, 2019 at 07:51 PM
 -- Server version: 8.0.18-0ubuntu0.19.10.1
 -- PHP Version: 7.3.11-0ubuntu0.19.10.1
 
@@ -44,7 +44,12 @@ CREATE TABLE `pengguna` (
 --
 
 INSERT INTO `pengguna` (`id_pengguna`, `nama_depan`, `nama_belakang`, `email`, `username`, `password`, `level`, `gambar`) VALUES
-(1, 'Ferdy', 'Barliansyah', 'rocker.hunt@gmail.com', 'Ferdy', '1234', 'Administrator', 'me1.jpg');
+(1, 'Ferdy', 'Barliansyah', 'rocker.hunt@gmail.com', 'Ferdy', '1234', 'Administrator', 'me1.jpg'),
+(3, 'Emiliana', 'Fitriani', 'emilanafit@gmail.com', 'Emilafit', '1234', 'Administrator', 'LOGO_STMIK_LOMBOK1.png'),
+(4, 'Joana', 'Dewi', 'joanadewi@gmail.com', 'Jonadewi', '1234', 'Staff', 'LOGO_STMIK_LOMBOK6.png'),
+(5, 'Lalu', 'Saiful', 'saifullalu@gmail.com', 'Lalusaiful', '1234', 'Staff', 'LOGO_STMIK_LOMBOK3.png'),
+(6, 'Ahmad', 'Ayadi', 'Amdayadi@gmail.com', 'ahmadaya', '1234', 'Staff', 'LOGO_STMIK_LOMBOK4.png'),
+(7, 'Sani', 'Sabila', 'sanisablila@gmail.com', 'sanibila', '1234', 'Staff', 'LOGO_STMIK_LOMBOK5.png');
 
 --
 -- Indexes for dumped tables
@@ -64,7 +69,7 @@ ALTER TABLE `pengguna`
 -- AUTO_INCREMENT for table `pengguna`
 --
 ALTER TABLE `pengguna`
-  MODIFY `id_pengguna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pengguna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
