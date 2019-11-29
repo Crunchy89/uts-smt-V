@@ -2,7 +2,7 @@
 <a href="<?= site_url('admin/tambah_pengguna') ?>" class="btn btn-success mt-3 mb-3">Tambah Data</a>
 
 <div class="table-responsive">
-	<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+	<table class="table table-bordered table-sm table-hover" id="dataTable" width="100%" cellspacing="0">
 		<thead>
 			<tr>
 				<th>No</th>
